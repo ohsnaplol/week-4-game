@@ -1,38 +1,102 @@
-$(document).onReady(function() {
+$(document).ready(function() {
+  var playerCanChooseHero = true;
+  var playerCanChooseEnemy = true;
+  var playerCanAttack = false;
   var currentHero;
-  var playerIsSelectingHero = true;
+  var currentDefender;
+
+  $("#enemywarrior,#enemywizard,#enemyrogue,#enemypriest").hide();
+  $("#playerwarrior,#playerwizard,#playerrogue,#playerpriest").hide();
+  $("#defendingwarrior,#defendingwizard,#defendingrogue,#defendingpriest").hide();
 
   $("#warrior").on("click", function() {
-    if playerIsSelectingHero {
-      currentHero = "wa";
+    if (playerCanChooseHero) {
+      setupGame("wa");
+      playerCanChooseHero = false;
     }
-    playerIsSelectingHero = false;
   });
   $("#wizard").on("click", function() {
-    if playerIsSelectingHero {
-      currentHero = "wi";
+    if (playerCanChooseHero) {
+      setupGame("wi");
+      playerCanChooseHero = false;
     }
-    playerIsSelectingHero = false;
   });
   $("#rogue").on("click", function() {
-    if playerIsSelectingHero {
-      currentHero = "ro";
+    if (playerCanChooseHero) {
+      setupGame("ro");
+      playerCanChooseHero = false;
     }
-    playerIsSelectingHero = false;
   });
   $("#priest").on("click", function() {
-    if playerIsSelectingHero {
-      currentHero = "pr";
+    if (playerCanChooseHero) {
+      setupGame("pr");
+      playerCanChooseHero = false;
     }
-    playerIsSelectingHero = false;
   });
 
-  function startGame(hero) {
-    $("#currentCharacter").innerHTML("");
+  $("#enemywarrior").on("click", function() {
+    currentDefender = characters.Warrior;
+    console.log(currentDefender.health);
+  });
+  $("#enemywizard").on("click", function() {
+    currentDefender = characters.Wizard;
+    console.log(currentDefender.health);
+  });
+  $("#enemyrogue").on("click", function() {
+    currentDefender = characters.Rogue;
+    console.log(currentDefender.health);
+  });
+  $("#enemypriest").on("click", function() {
+    currentDefender = characters.Priest;
+    console.log(currentDefender.health);
+  });
+
+  function setupGame(hero) {
+    $("#warrior,#wizard,#rogue,#priest").hide();
+    // Move current character and enemies into position
+    if(hero === "wa") {
+      currentHero = characters.Warrior;
+      $("#playerwarrior").show();
+      $("#enemywizard,#enemyrogue,#enemypriest").show();
+    } else if (hero === "wi") {
+      currentHero = characters.Wizard;
+      $("#playerwizard").show();
+      $("#enemywarrior,#enemyrogue,#enemypriest").show();
+    } else if (hero === "ro") {
+      currentHero = characters.Rogue;
+      $("#playerrogue").show();
+      $("#enemywarrior,#enemywizard,#enemypriest").show();
+    } else if (hero === "pri") {
+      currentHero = characters.Priest;
+      $("#playerpriest").show();
+      $("#enemywarrior,#enemywizard,#enemyrogue").show();
+    }
   }
+
+  $("#attackButton").on("click", function() {
+
+  })
 })
 
-var hero {
-  hp,
-  atk;
-}
+var characters = {
+   Warrior: {
+     health: 200,
+     attack: 9,
+     enemyAttackBack: 15
+   },
+   Wizard: {
+     health: 150,
+     attack: 12,
+     enemyAttackBack: 15
+   },
+   Rogue: {
+     health: 100,
+     attack: 20,
+     enemyAttackBack: 15
+   },
+   Priest: {
+     health: 300,
+     attack: 5,
+     enemyAttackBack: 15
+   }
+ }

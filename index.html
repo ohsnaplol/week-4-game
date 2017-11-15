@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="./assets/css/style.css">
   <!-- jquery -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <link rel="script" href="./assets/js/game.js">
+  <script src="./assets/js/game.js"></script>
 </head>
 <body>
   <!-- Whole container -->
@@ -36,8 +36,46 @@
     </div>
 
     <h2>Current character</h2>
-    <div id="currentCharacter"></div>
-    <button type="button" class="btn btn-danger">attack</button>
+    <div class="row">
+      <div class="col-sm-2" id="playerwarrior">
+        <img class="img-thumbnail" src="./assets/img/warrior.png" class="">
+        <p>Warrior 50hp</p>
+      </div>
+      <div class="col-sm-2" id="playerwizard">
+        <img class="img-thumbnail" src="./assets/img/wizard.png">
+        <p>Wizard 30hp</p>
+      </div>
+      <div class="col-sm-2" id="playerrogue">
+        <img class="img-thumbnail" src="./assets/img/rogue.png">
+        <p>Rogue 30hp</p>
+      </div>
+      <div class="col-sm-2" id="playerpriest">
+        <img class="img-thumbnail" src="./assets/img/priest.png">
+        <p>Priest 20hp</p>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-danger" id="attackButton">attack</button>
+
+    <h2>Current defender</h2>
+    <div class="row">
+      <div class="col-sm-2" id="defendingwarrior">
+        <img class="img-thumbnail" src="./assets/img/warrior.png" class="">
+        <p>Warrior 50hp</p>
+      </div>
+      <div class="col-sm-2" id="defendingwizard">
+        <img class="img-thumbnail" src="./assets/img/wizard.png">
+        <p>Wizard 30hp</p>
+      </div>
+      <div class="col-sm-2" id="defendingrogue">
+        <img class="img-thumbnail" src="./assets/img/rogue.png">
+        <p>Rogue 30hp</p>
+      </div>
+      <div class="col-sm-2" id="defendingpriest">
+        <img class="img-thumbnail" src="./assets/img/priest.png">
+        <p>Priest 20hp</p>
+      </div>
+    </div>
 
     <h2>Enemies</h2>
     <div class="row">
