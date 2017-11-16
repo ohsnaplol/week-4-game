@@ -1,7 +1,6 @@
 $(document).ready(function() {
   var playerCanChooseHero = true;
   var playerCanChooseEnemy = true;
-  var playerCanatk = false;
   var currentHero;
   var currentDefender;
 
@@ -68,32 +67,40 @@ $(document).ready(function() {
   $("#enemywarrior").on("click", function() {
     if (playerCanChooseEnemy) {
       currentDefender = characters.Warrior;
+      console.log("currentDefender hp is now" + currentDefender.hp);
       $("#enemywarrior").hide();
       $("#defendingwarrior,#currentDefenderLabel,#attackButton").show();
+      $(".enemyHP").html(currentDefender.hp + "hp");
       playerCanChooseEnemy = false;
     }
   });
   $("#enemywizard").on("click", function() {
     if (playerCanChooseEnemy) {
       currentDefender = characters.Wizard;
+      console.log("currentDefender hp is now" + currentDefender.hp);
       $("#enemywizard").hide();
       $("#defendingwizard,#currentDefenderLabel,#attackButton").show();
+      $(".enemyHP").html(currentDefender.hp + "hp");
       playerCanChooseEnemy = false;
     }
   });
   $("#enemyrogue").on("click", function() {
     if (playerCanChooseEnemy) {
       currentDefender = characters.Rogue;
+      console.log("currentDefender hp is now" + currentDefender.hp);
       $("#enemyrogue").hide();
       $("#defendingrogue,#currentDefenderLabel,#attackButton").show();
+      $(".enemyHP").html(currentDefender.hp + "hp");
       playerCanChooseEnemy = false;
     }
   });
   $("#enemypriest").on("click", function() {
     if (playerCanChooseEnemy) {
       currentDefender = characters.Priest;
+      console.log("currentDefender hp is now" + currentDefender.hp);
       $("#enemypriest").hide();
       $("#defendingpriest,#currentDefenderLabel,#attackButton").show();
+      $(".enemyHP").html(currentDefender.hp + "hp");
       playerCanChooseEnemy = false;
     }
   });
@@ -101,53 +108,66 @@ $(document).ready(function() {
   $("#attackButton").on("click", function() {
     // if player has health and enemy has health
     if (currentHero.hp > 0 && currentDefender.hp > 0) {
-      // Player hits the bad guy and is buffed
+      // Player hits the bad guy, msg1 shows how much dmg it did, hp label updates
       currentDefender.hp -= currentHero.atk;
+      $("#msg1").html("You attacked " + currentDefender.id + " for " + currentHero.atk);
       currentHero.atk += currentHero.atk;
+      $(".enemyHP").html(currentDefender.hp + "hp");
       // if bad guy is still alive
       if (currentDefender.hp > 0) {
-        if(currentDefender.id === "pr") {
+        if(currentDefender.id === "Priest") {
           currentDefender.hp += 10;
-          console.log("The priest healed himself for 10hp!");
+          $("#msg1").append(" Priest healed himself for 10 hp!");
         }
         // Bad guy hits player back
         currentHero.hp -= currentDefender.enemyatkBack;
+        $(".playerHP").html(currentHero.hp);
+        $("#msg2").html(currentDefender.id + " attacked you back for " + currentDefender.enemyatkBack);
         if (currentHero.hp <= 0) {
-          console.log("You died");
+          $("#msg1").append("You died");
         }
       } else {
         playerCanChooseEnemy = true;
         $("#defendingwarrior,#defendingwizard,#defendingrogue,#defendingpriest,#attackButton").hide();
-        console.log("You defeated enemy");
+        $("#msg2").html("You are victorious!");
       }
-      console.log("Your hero has " + currentHero.hp);
-      console.log("Bad guy has " + currentDefender.hp);
     }
+  })
+
+  $("#restartButton").on("click", function() {
+    var playerCanChooseHero = true;
+    var playerCanChooseEnemy = true;
+    $("#warrior,#wizard,#rogue,#priest").show();
+    $("#enemywarrior,#enemywizard,#enemyrogue,#enemypriest").hide();
+    $("#playerwarrior,#playerwizard,#playerrogue,#playerpriest").hide();
+    $("#defendingwarrior,#defendingwizard,#defendingrogue,#defendingpriest").hide();
+    $("#currentCharacterLabel,#atkButton,#currentDefenderLabel,#enemiesLabel").hide();
+    $("#attackButton").hide();
   })
 
 })
 
 var characters = {
    Warrior: {
-     id: "wa",
+     id: "Warrior",
      hp: 200,
      atk: 9,
      enemyatkBack: 9
    },
    Wizard: {
-     id: "wi",
+     id: "Wizard",
      hp: 150,
      atk: 12,
      enemyatkBack: 12
    },
    Rogue: {
-     id: "ro",
+     id: "Rogue",
      hp: 100,
      atk: 20,
      enemyatkBack: 20
    },
    Priest: {
-     id: "pr",
+     id: "Priest",
      hp: 100,
      atk: 5,
      enemyatkBack: 5

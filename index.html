@@ -44,51 +44,51 @@
       <div class="col-sm-2" id="playerwarrior">
         <span>Warrior</span>
         <img class="img-thumbnail" src="./assets/img/warrior.png" class="">
-        <p>200hp</p>
+        <p class="playerHP">200hp</p>
       </div>
       <div class="col-sm-2" id="playerwizard">
         <span>Wizard</span>
         <img class="img-thumbnail" src="./assets/img/wizard.png">
-        <p>100hp</p>
+        <p class="playerHP">100hp</p>
       </div>
       <div class="col-sm-2" id="playerrogue">
         <span>Rogue</span>
         <img class="img-thumbnail" src="./assets/img/rogue.png">
-        <p>100hp</p>
+        <p class="playerHP">100hp</p>
       </div>
       <div class="col-sm-2" id="playerpriest">
         <span>Priest</span>
         <img class="img-thumbnail" src="./assets/img/priest.png">
-        <p>100hp</p>
+        <p class="playerHP">100hp</p>
       </div>
     </div>
 
-    <button type="button" class="btn btn-danger" id="attackButton">attack</button>
+    <button type="button" class="btn btn-danger" id="attackButton">Attack</button>
 
     <h2 id="currentDefenderLabel">VS</h2>
     <div class="row">
       <div class="col-sm-2" id="defendingwarrior">
         <span>Warrior</span>
         <img class="img-thumbnail" src="./assets/img/warrior.png" class="">
-        <p id="enemyHP">200hp</p>
+        <p class="enemyHP">200hp</p>
       </div>
       <div class="col-sm-2" id="defendingwizard">
         <span>Priest</span>
         <img class="img-thumbnail" src="./assets/img/wizard.png">
-        <p id="enemyHP">100hp</p>
+        <p class="enemyHP">100hp</p>
       </div>
       <div class="col-sm-2" id="defendingrogue">
         <span>Rogue</span>
         <img class="img-thumbnail" src="./assets/img/rogue.png">
-        <p id="enemyHP">100hp</p>
+        <p class="enemyHP">100hp</p>
       </div>
       <div class="col-sm-2" id="defendingpriest">
         <span>Priest</span>
         <img class="img-thumbnail" src="./assets/img/priest.png">
-        <p id="enemyHP">100hp</p>
+        <p class="enemyHP">100hp</p>
       </div>
     </div>
-
+    <!-- Choose an enemy -->
     <h2 id="enemiesLabel">Enemies</h2>
     <div class="row">
       <div class="col-sm-2" id="enemywarrior">
@@ -112,6 +112,11 @@
         <p>100hp</p>
       </div>
     </div>
+
+    <p id="msg1"></p>
+    <p id="msg2"></p>
+
+    <button type="button" class="btn btn-primary" id="restartButton">Restart</button>
   </div>
 </body>
 </html>
