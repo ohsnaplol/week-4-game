@@ -111,20 +111,24 @@ $(document).ready(function() {
       // Player hits the bad guy, msg1 shows how much dmg it did, hp label updates
       currentDefender.hp -= currentHero.atk;
       $("#msg1").html("You attacked " + currentDefender.id + " for " + currentHero.atk);
+      if(currentHero.id === "Priest") {
+        currentHero.hp += 15;
+        $("#msg1").append(" You healed yourself for 15! ");
+      }
       currentHero.atk += currentHero.atk;
       $(".enemyHP").html(currentDefender.hp + "hp");
       // if bad guy is still alive
       if (currentDefender.hp > 0) {
         if(currentDefender.id === "Priest") {
-          currentDefender.hp += 10;
-          $("#msg1").append(" Priest healed himself for 10 hp!");
+          currentDefender.hp += 20;
+          $("#msg1").append(" Priest healed himself for 20 hp! ");
         }
         // Bad guy hits player back
         currentHero.hp -= currentDefender.enemyatkBack;
         $(".playerHP").html(currentHero.hp);
         $("#msg2").html(currentDefender.id + " attacked you back for " + currentDefender.enemyatkBack);
         if (currentHero.hp <= 0) {
-          $("#msg1").append("You died");
+          $("#msg1").append(" You died");
         }
       } else {
         playerCanChooseEnemy = true;
@@ -155,23 +159,23 @@ function Warrior()  {
      this.id = "Warrior";
      this.hp = 200;
      this.atk = 9;
-     this.enemyatkBack = 9;
+     this.enemyatkBack = 30;
    };
 function Wizard() {
      this.id = "Wizard";
      this.hp = 150;
      this.atk = 12;
-     this.enemyatkBack = 12;
+     this.enemyatkBack = 36;
    };
 function Rogue() {
      this.id = "Rogue";
      this.hp = 100;
      this.atk = 20;
-     this.enemyatkBack = 20;
+     this.enemyatkBack = 45;
    };
 function Priest() {
      this.id = "Priest";
      this.hp = 100;
      this.atk = 5;
-     this.enemyatkBack = 5;
+     this.enemyatkBack = 15;
    };
